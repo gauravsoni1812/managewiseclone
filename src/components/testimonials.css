@@ -1,0 +1,65 @@
+/* Add these styles to your CSS file */
+.body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.slider {
+    height: 320px; /* Adjusted height */
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.slide-track {
+    display: flex;
+    width: calc(300px * 14);
+    animation: scroll 70s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-300px * 14));
+    }
+}
+
+.slide {
+    height: 100%; /* Adjusted height */
+    width: 300px;
+    display: flex;
+    flex-direction: column; /* Added to ensure content stacks vertically */
+    justify-content: space-between; /* Added to push content to the top and bottom */
+    padding: 15px;
+    box-sizing: border-box; /* Added to include padding in total height */
+    margin-right: 20px; /* Added margin in the x-axis */
+}
+
+/* Gradient Shadows */
+
+.slider::before,
+.slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
